@@ -5,3 +5,9 @@
       context: .
       dockerfile: TaskManager.API/Dockerfile
 
+  taskmanager.dal:
+    image: taskmanager.dal
+    build:
+      context: .
+      dockerfile: TaskManager.DAL/Dockerfile
+
