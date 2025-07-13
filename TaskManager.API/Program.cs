@@ -25,6 +25,11 @@ Log.Logger = new LoggerConfiguration()
     })
     .CreateLogger();
 
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("Redis"); 
+    options.InstanceName = "TaskManager_"; 
+});
 
 builder.Host.UseSerilog();
 builder.Services.AddHttpContextAccessor();
