@@ -11,8 +11,8 @@ Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
     .Enrich.WithProperty("Application", "TaskManager.API")
     .WriteTo.Console()
-    .WriteTo.File("C:\\Users\\aakim\\OneDrive\\Desktop\\logs.txt.txt")
-    .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri("http://localhost:9200"))
+    .WriteTo.File(@"C:\Users\aakim\OneDrive\Desktop\logs.txt.txt")
+    .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(builder.Configuration.GetConnectionString("Elastic")))
     {
         IndexFormat = "api-logs",
         AutoRegisterTemplate = true,
