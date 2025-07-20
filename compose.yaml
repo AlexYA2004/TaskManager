@@ -29,6 +29,23 @@
     volumes:
       - redis_data:/data
 
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: taskmanager
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
   elasticsearch:
     image: elasticsearch:8.12.0
     environment:
@@ -61,3 +78,4 @@
 volumes:
   elastic_data:
   redis_data:
+
