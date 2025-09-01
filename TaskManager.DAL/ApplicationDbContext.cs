@@ -10,4 +10,9 @@ public class ApplicationDbContext : DbContext
     {}
     public DbSet<UserEntity> Users { get; set; }
     public DbSet<TaskEntity> Tasks { get; set; }
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+    }
 }
