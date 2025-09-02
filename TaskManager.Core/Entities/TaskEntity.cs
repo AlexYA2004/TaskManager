@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TaskManager.DAL.Entities;
+namespace TaskManager.Core.Entities;
 
 public class TaskEntity : BaseEntity
 {

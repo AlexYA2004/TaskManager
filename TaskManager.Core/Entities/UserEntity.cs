@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace TaskManager.DAL.Entities;
+namespace TaskManager.Core.Entities;
 
 public class UserEntity : BaseEntity
 {
