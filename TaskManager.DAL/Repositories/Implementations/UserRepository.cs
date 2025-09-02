@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using TaskManager.DAL.Entities;
+using TaskManager.Core.Entities;
 using TaskManager.DAL.Repositories.Interfaces;
 
 namespace TaskManager.DAL.Repositories.Implementations;
