@@ -9,17 +9,6 @@
     depends_on:
       - elasticsearch
       - redis
-#  taskmanager.dal:
-#    image: taskmanager.dal
-#    build:
-#      context: .
-#      dockerfile: TaskManager.DAL/Dockerfile
-
-  taskmanager.dal:
-    image: taskmanager.dal
-    build:
-      context: .
-      dockerfile: TaskManager.DAL/Dockerfile
       
   redis:
     image: redis:latest
@@ -78,4 +67,5 @@
 volumes:
   elastic_data:
   redis_data:
+  postgres_data:
 
