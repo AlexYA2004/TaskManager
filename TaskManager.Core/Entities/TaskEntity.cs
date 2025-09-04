@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TaskManager.Core.Enums;
 
 namespace TaskManager.Core.Entities;
 
@@ -37,18 +38,4 @@ public class TaskEntity : BaseEntity
         Status = newStatus;
         UpdatedAt = DateTime.UtcNow;
     }
-}
-
-public enum Status
-{
-    New,
-    InProgress,
-    Done
-}
-
-public enum Priority
-{
-    Low,
-    Medium,
-    High
 }
