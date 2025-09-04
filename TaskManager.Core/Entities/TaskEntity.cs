@@ -24,11 +24,19 @@ public class TaskEntity : BaseEntity
     public Priority Priority { get; set; } = Priority.Low;
     
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
     [ForeignKey("Author")]
     public Guid AuthorId { get; set; }
 
     public UserEntity Author { get; set; }
+    
+    public void ChangeStatus(Status newStatus)
+    {
+        Status = newStatus;
+        UpdatedAt = DateTime.UtcNow;
+    }
 }
 
 public enum Status
