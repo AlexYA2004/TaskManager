@@ -1,7 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TaskManager.Core.Enums;
 
-namespace TaskManager.DAL.Entities;
+namespace TaskManager.Core.Entities;
 
 public class TaskEntity : BaseEntity
 {
@@ -24,23 +25,17 @@ public class TaskEntity : BaseEntity
     public Priority Priority { get; set; } = Priority.Low;
     
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
     [ForeignKey("Author")]
     public Guid AuthorId { get; set; }
 
     public UserEntity Author { get; set; }
-}
-
-public enum Status
-{
-    New,
-    InProgress,
-    Done
-}
-
-public enum Priority
-{
-    Low,
-    Medium,
-    High
+    
+    public void ChangeStatus(Status newStatus)
+    {
+        Status = newStatus;
+        UpdatedAt = DateTime.UtcNow;
+    }
 }

@@ -1,4 +1,4 @@
-using TaskManager.DAL.Entities;
+using TaskManager.Core.Entities;
 using Task = System.Threading.Tasks.Task;
 
 namespace TaskManager.DAL.Repositories.Interfaces;

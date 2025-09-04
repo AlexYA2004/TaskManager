@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TaskManager.DAL.Entities;
+using TaskManager.Core.Entities;
 
 namespace TaskManager.DAL.ModelConfiguration;
 

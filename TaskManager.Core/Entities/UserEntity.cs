@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
+using TaskManager.Core.Enums;
 
-namespace TaskManager.DAL.Entities;
+namespace TaskManager.Core.Entities;
 
 public class UserEntity : BaseEntity
 {
@@ -26,10 +27,4 @@ public class UserEntity : BaseEntity
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     
     public ICollection<TaskEntity> UserTasks { get; set; } = new List<TaskEntity>();
-}
-
-public enum Role
-{
-    User,
-    Admin
 }
