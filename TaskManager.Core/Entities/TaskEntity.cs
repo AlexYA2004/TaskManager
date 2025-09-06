@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using TaskManager.Core.Enums;
+using TaskManager.Core.Exceptions.TaskExceptions;
 
 namespace TaskManager.Core.Entities;
 
@@ -33,9 +34,27 @@ public class TaskEntity : BaseEntity
 
     public UserEntity Author { get; set; }
     
-    public void ChangeStatus(Status newStatus)
+    public void MarkAsDone() => ChangeStatus(Status.Done);
+    public void StartProgress() => ChangeStatus(Status.InProgress);
+    public void Cancel() => ChangeStatus(Status.Cancelled);
+    public void Reopen() => ChangeStatus(Status.New);
+    private void ChangeStatus(Status newStatus)
     {
+        ValidateStatusChange(newStatus);
+        
         Status = newStatus;
         UpdatedAt = DateTime.UtcNow;
     }
+    private void ValidateStatusChange(Status newStatus)
+    {
+        if (Status == Status.Cancelled && newStatus != Status.Cancelled)
+            throw new ChangeTaskStatusException("Cannot change status of cancelled task");
+        
+        if (Status == Status.Done && newStatus != Status.Done)
+            throw new ChangeTaskStatusException("Cannot change status of completed task");
+        
+        if (Status == Status.Done && newStatus == Status.Cancelled)
+            throw new ChangeTaskStatusException("Cannot cancel completed task");
+    }
+
 }
